@@ -1,0 +1,69 @@
+<header class="bg-[#E8F4FF] text-[#21305D] border-t-4 border-blue-500">
+  <div class="container mx-auto flex justify-between items-center p-4">
+    <div class="text-2xl font-bold">
+      <img src="assets/images/logoibictazul.png" alt="" class="w-[160px]" />
+    </div>
+    <nav class="hidden md:flex space-x-4 font-bold">
+      <a href="#" class="hover:text-blue-500">CDU</a>
+      <a href="#" class="hover:text-blue-500">Condições de uso</a>
+      <a href="#" class="hover:text-blue-500">Editorial</a>
+      <a href="#" class="hover:text-blue-500">Contato</a>
+    </nav>
+    <div class="flex md:hidden">
+      <button onclick="toggleMenu()" class="text-blue-950 focus:outline-none">
+        <svg
+          class="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16"
+          ></path>
+        </svg>
+      </button>
+    </div>
+    <button
+      class="hidden md:block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
+      routerLink="login"
+    >
+      Entrar
+    </button>
+  </div>
+  <nav id="mobile-menu" class="hidden md:hidden bg-[#21305D]">
+    <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+      <a
+        href="#"
+        class="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-blue-500"
+        >CDU</a
+      >
+      <a
+        href="#"
+        class="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-blue-500"
+        >Condições de Uso</a
+      >
+      <a
+        href="#"
+        class="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-blue-500"
+        >Editorial</a
+      >
+      <a
+        href="#"
+        class="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-blue-500"
+        >Contato</a
+      >
+
+      <li><a routerLink="/" class="text-white">Home</a></li>
+      <button
+        class="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        click="#"
+      >
+        Entrar
+      </button>
+    </div>
+  </nav>
+</header>

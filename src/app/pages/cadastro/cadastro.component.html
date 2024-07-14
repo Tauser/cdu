@@ -1,0 +1,207 @@
+<form
+  [formGroup]="registerForm"
+  (ngSubmit)="onSubmit()"
+  class="max-w-md mx-auto"
+>
+  <div class="mb-4">
+    <label for="nome" class="block text-gray-700 font-bold mb-2">Nome</label>
+    <input
+      id="nome"
+      formControlName="nome"
+      type="text"
+      class="form-input w-full"
+      required
+    />
+    <div
+      *ngIf="
+        registerForm.get('nome')?.invalid && registerForm.get('nome')?.touched
+      "
+      class="text-red-500 text-xs mt-1"
+    >
+      Nome é obrigatório
+    </div>
+  </div>
+
+  <div class="mb-4">
+    <label for="email" class="block text-gray-700 font-bold mb-2">Email</label>
+    <input
+      id="email"
+      formControlName="email"
+      type="email"
+      class="form-input w-full"
+      required
+    />
+    <div
+      *ngIf="
+        registerForm.get('email')?.invalid && registerForm.get('email')?.touched
+      "
+      class="text-red-500 text-xs mt-1"
+    >
+      Email inválido
+    </div>
+  </div>
+
+  <div class="mb-4">
+    <label for="telefone" class="block text-gray-700 font-bold mb-2"
+      >Telefone</label
+    >
+    <input
+      id="telefone"
+      formControlName="telefone"
+      type="text"
+      class="form-input w-full"
+      mask="(00) 00000-0000"
+      required
+    />
+    <div
+      *ngIf="
+        registerForm.get('telefone')?.invalid &&
+        registerForm.get('telefone')?.touched
+      "
+      class="text-red-500 text-xs mt-1"
+    >
+      Telefone é obrigatório
+    </div>
+  </div>
+
+  <div class="mb-4">
+    <label for="cpf" class="block text-gray-700 font-bold mb-2">CPF</label>
+    <input
+      id="cpf"
+      formControlName="cpf"
+      type="text"
+      class="form-input w-full"
+      mask="000.000.000-00"
+      required
+    />
+    <div
+      *ngIf="
+        registerForm.get('cpf')?.invalid && registerForm.get('cpf')?.touched
+      "
+      class="text-red-500 text-xs mt-1"
+    >
+      CPF é obrigatório
+    </div>
+  </div>
+
+  <div class="mb-4">
+    <label for="instituicao" class="block text-gray-700 font-bold mb-2"
+      >Instituição</label
+    >
+    <input
+      id="instituicao"
+      formControlName="instituicao"
+      type="text"
+      class="form-input w-full"
+      required
+    />
+    <div
+      *ngIf="
+        registerForm.get('instituicao')?.invalid &&
+        registerForm.get('instituicao')?.touched
+      "
+      class="text-red-500 text-xs mt-1"
+    >
+      Instituição é obrigatória
+    </div>
+  </div>
+
+  <div class="mb-4">
+    <label for="formacao" class="block text-gray-700 font-bold mb-2"
+      >Formação</label
+    >
+    <input
+      id="formacao"
+      formControlName="formacao"
+      type="text"
+      class="form-input w-full"
+      required
+    />
+    <div
+      *ngIf="
+        registerForm.get('formacao')?.invalid &&
+        registerForm.get('formacao')?.touched
+      "
+      class="text-red-500 text-xs mt-1"
+    >
+      Formação é obrigatória
+    </div>
+  </div>
+
+  <div class="mb-4">
+    <label for="nivel" class="block text-gray-700 font-bold mb-2">Nível</label>
+    <input
+      id="nivel"
+      formControlName="nivel"
+      type="text"
+      class="form-input w-full"
+      required
+    />
+    <div
+      *ngIf="
+        registerForm.get('nivel')?.invalid && registerForm.get('nivel')?.touched
+      "
+      class="text-red-500 text-xs mt-1"
+    >
+      Nível é obrigatório
+    </div>
+  </div>
+
+  <div class="mb-4">
+    <label for="senha" class="block text-gray-700 font-bold mb-2">Senha</label>
+    <input
+      id="senha"
+      formControlName="senha"
+      type="password"
+      class="form-input w-full"
+      required
+    />
+    <div
+      *ngIf="
+        registerForm.get('senha')?.invalid && registerForm.get('senha')?.touched
+      "
+      class="text-red-500 text-xs mt-1"
+    >
+      Senha deve ter no mínimo 6 caracteres
+    </div>
+  </div>
+
+  <div class="mb-4">
+    <label for="confirmacaoSenha" class="block text-gray-700 font-bold mb-2"
+      >Confirmação de Senha</label
+    >
+    <input
+      id="confirmacaoSenha"
+      formControlName="confirmacaoSenha"
+      type="password"
+      class="form-input w-full"
+      required
+    />
+    <div
+      *ngIf="
+        registerForm.get('confirmacaoSenha')?.invalid &&
+        registerForm.get('confirmacaoSenha')?.touched
+      "
+      class="text-red-500 text-xs mt-1"
+    >
+      Confirmação de senha deve ter no mínimo 6 caracteres
+    </div>
+    <div
+      *ngIf="
+        registerForm.errors?.['notSame'] &&
+        registerForm.get('confirmacaoSenha')?.touched
+      "
+      class="text-red-500 text-xs mt-1"
+    >
+      As senhas não coincidem
+    </div>
+  </div>
+
+  <button
+    type="submit"
+    [disabled]="registerForm.invalid"
+    class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+  >
+    Registrar
+  </button>
+</form>
