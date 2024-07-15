@@ -9,13 +9,14 @@ import {
   ReactiveFormsModule,
 } from '@angular/forms';
 import { CadastroService } from '../../services/cadastro.service';
+import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 
 @Component({
   selector: 'app-cadastro',
   standalone: true,
   templateUrl: './cadastro.component.html',
   styleUrls: ['./cadastro.component.css'],
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, NgxMaskDirective, NgxMaskPipe],
 })
 export class CadastroComponent {
   registerForm: FormGroup;
