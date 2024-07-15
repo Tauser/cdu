@@ -8,6 +8,7 @@ import {
   ValidationErrors,
   ReactiveFormsModule,
 } from '@angular/forms';
+import { CadastroService } from '../../services/cadastro.service';
 
 @Component({
   selector: 'app-cadastro',
@@ -19,7 +20,10 @@ import {
 export class CadastroComponent {
   registerForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private cadastroService: CadastroService
+  ) {
     this.registerForm = this.fb.group(
       {
         nome: ['', [Validators.required]],
@@ -43,11 +47,16 @@ export class CadastroComponent {
     return senha === confirmacaoSenha ? null : { notSame: true };
   }
 
-  onSubmit() {
+  onSubmit(): void {
     if (this.registerForm.valid) {
-      console.log(this.registerForm.value);
-    } else {
-      console.error('Formulário inválido');
+      this.cadastroService.registrarUsuario(this.registerForm.value).subscribe(
+        (response) => {
+          console.log('Cadastro realizado com sucesso', response);
+        },
+        (error) => {
+          console.error('Erro ao realizar o cadastro', error);
+        }
+      );
     }
   }
 }
