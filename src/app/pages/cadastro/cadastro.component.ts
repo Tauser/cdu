@@ -1,19 +1,20 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
-  ReactiveFormsModule,
   Validators,
+  AbstractControl,
+  ValidationErrors,
+  ReactiveFormsModule,
 } from '@angular/forms';
-import { CommonModule } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-cadastro',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './cadastro.component.html',
-  styleUrl: './cadastro.component.css',
+  styleUrls: ['./cadastro.component.css'],
+  imports: [CommonModule, ReactiveFormsModule],
 })
 export class CadastroComponent {
   registerForm: FormGroup;
@@ -26,16 +27,17 @@ export class CadastroComponent {
         telefone: ['', [Validators.required]],
         cpf: ['', [Validators.required]],
         instituicao: ['', [Validators.required]],
+        atividadePrincipal: ['', [Validators.required]],
         formacao: ['', [Validators.required]],
         nivel: ['', [Validators.required]],
         senha: ['', [Validators.required, Validators.minLength(6)]],
         confirmacaoSenha: ['', [Validators.required, Validators.minLength(6)]],
       },
-      { validator: this.checkPasswords }
+      { validators: this.checkPasswords }
     );
   }
 
-  checkPasswords(group: FormGroup) {
+  checkPasswords(group: AbstractControl): ValidationErrors | null {
     const senha = group.get('senha')?.value;
     const confirmacaoSenha = group.get('confirmacaoSenha')?.value;
     return senha === confirmacaoSenha ? null : { notSame: true };
